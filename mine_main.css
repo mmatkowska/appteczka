@@ -1,0 +1,134 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #0C7C74;
+  font-weight: 300;
+}
+
+/*NAGŁÓWEK*/
+header {
+  padding: 20px 0;
+}
+
+header .row {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+}
+/*-----------*/
+
+/*JUMBO*/
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-image: url('http://theblueroom.bupa.com.au/-/media/images/life-stages/placeholders/1200x600/2015/06/manage-your-meds-hero.jpeg');
+  background-size: cover;
+  color: #ffffff;
+  height: 500px;
+  text-shadow: 0.25px 0.25px 0.25px #000000;
+  margin-bottom: 70px;
+}
+
+.jumbotron h2 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+  color: #176e9a;
+}
+
+.jumbotron h3 {
+  margin: 0 0 20px;
+  color: #759bb6;
+}
+/*-----------*/
+
+/*FOOTER*/
+footer {
+  background-color: #d8d7dd;
+  font-size: 12px;
+  padding: 20px 0;
+  background-size: cover;
+  display: flex;
+}
+
+/*footer .col-sm-8 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li img {
+  width: 32px;
+  height: 32px;
+}
+
+footer .row {
+  display: flex;
+  align-items: center;
+}
+/*-----------*/
+
+/*BUTTONS*/
+.btn.btn-primary {
+  border-radius: 2px;
+  border: 0px;
+  color: white;
+  text-shadow: none;
+  background-color: #caae89;
+  margin-right: 5px;
+}
+
+.btn.btn-primary:hover {
+  color: white;
+  background-color: #988255;
+}
+
+.btn-secondary {
+  background-color: #E8DFE0;
+  color: #ffffff;
+  margin: 0 0 30px;
+}
+/*-----------*/
+
+/*SEKCJA*/
+section{
+	top-margin: 30px;
+}
+
+section .row img {
+  margin: 0 0 30px;
+  width: 100%;
+}
+/*-----------*/
+
+/*KLOCKI*/
+col-sm-4 {
+	color:#176e9a;
+}
+
+.col-md-6 {
+  margin: 0 0 30px;
+}
+
+col-sm-6 {
+	display: right;
+	align-items: center;
+}
+/*-----------*/
+
