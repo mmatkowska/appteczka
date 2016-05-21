@@ -1,0 +1,91 @@
+P { font-size: 15pt; 
+	color: green; 
+	font-family: "Verdana CE", Verdana, "Arial CE", Arial, Helvetica, sans-serif;
+	text-decoration: none; text-align: justify; 
+	margin-bottom: 2px; 
+	font-weight: normal;
+}
+
+
+H5 {font-size: 8pt; 
+	color: gray; 
+	font-family: "Verdana CE", Verdana, "Arial CE", Arial, Helvetica, sans-serif;
+	text-decoration: none; 
+	text-align: justify; 
+	margin-bottom: 2px; 
+	font-weight: normal;
+}  
+
+HEADER {
+	width: 100%;
+	text-align: center;		
+}  
+
+FOOTER {
+    width: 100%;
+	clear: both;
+	padding: 20px; 
+}
+
+FOOTER H5{
+	font-size: 8pt; 
+	color: gray; 
+	font-family: "Verdana CE", Verdana, "Arial CE", Arial, Helvetica, sans-serif;
+	text-decoration: none; 
+	text-align: center; 
+	margin-bottom: 2px; 
+	font-weight: normal;
+} 
+
+/* MENU */
+
+#MojeMenu{
+	width: 100%;
+	margin-top: 30px; 	
+}
+
+#MojeMenu ul, ul li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#MojeMenu ul li {
+	float: left; 
+}
+
+#MojeMenu ul a:link, ul a:visited {
+	text-decoration: none;
+	display: block;
+	width: 120px;
+	text-align: center;
+	background-color: #DDDDDD;
+	font-family: "Verdana CE", Verdana, "Arial CE", Arial, Helvetica, sans-serif;
+	color: #000;
+	border: 2px outset #999999;
+	padding: 5px;
+}
+
+#MojeMenu ul a:hover {
+	border-style: inset;
+	padding: 7px 3px 3px 7px;
+}
+/* MENU koniec */
+
+/* Tresc */
+#tresc {
+    width: 100%;
+	clear: both;
+	padding: 10px; 
+}
+/* Tresc koniec */
+
+#blad{
+	font-size: 8pt; 
+	color: red; 
+	font-family: "Verdana CE", Verdana, "Arial CE", Arial, Helvetica, sans-serif;
+	text-align: center;  
+	font-weight: normal;	
+}
+

@@ -1,6 +1,17 @@
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('../fonts/Montserrat-Regular.eot');
+  src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+  url('../fonts/Montserrat-Regular.woff') format('woff'),
+  url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+  url('../fonts/Montserrat-Regular.svg#Montserrat-Regular') format('svg'),
+  url('../fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Ubuntu', sans-serif;
-  color: #0C7C74;
+  font-family: 'Montserrat-Regular', sans-serif;
   font-weight: 300;
 }
 
@@ -34,11 +45,11 @@ header p {
 .jumbotron {
   display: flex;
   align-items: center;
-  background-image: url('http://theblueroom.bupa.com.au/-/media/images/life-stages/placeholders/1200x600/2015/06/manage-your-meds-hero.jpeg');
+  background-image: url('../img/meds.jpeg');
   background-size: cover;
   color: #ffffff;
   height: 500px;
-  text-shadow: 0.25px 0.25px 0.25px #000000;
+  text-shadow: 2px 2px 2px rgba(0, 22, 82, 1) !important;
   margin-bottom: 70px;
 }
 
@@ -53,6 +64,30 @@ header p {
   margin: 0 0 20px;
   color: #759bb6;
 }
+
+.jumbo-thin{
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  height: 100px;
+}
+
+.paczka {
+  color: black;
+  text-shadow: none;
+  background-color: #d8d7dd;
+  padding: 30px 20px 30px 20px;
+  align-content: center;
+  border-radius:5px;
+  justify-content: center;
+  display: inline-block;
+  /*box-shadow: 2px 2px 1px #cccbd1;*/
+}
+
+.paczka a{
+  color: #176e9a;
+  text-shadow: none;
+}
 /*-----------*/
 
 /*FOOTER*/
@@ -62,6 +97,11 @@ footer {
   padding: 20px 0;
   background-size: cover;
   display: flex;
+  margin-top: 20px;
+}
+
+footer .col-sm-1 {
+float:right;
 }
 
 /*footer .col-sm-8 {
@@ -107,9 +147,9 @@ footer .row {
 /*-----------*/
 
 /*SEKCJA*/
-section{
+/*section{
 	top-margin: 30px;
-}
+}*/
 
 section .row img {
   margin: 0 0 30px;
@@ -118,17 +158,33 @@ section .row img {
 /*-----------*/
 
 /*KLOCKI*/
-col-sm-4 {
-	color:#176e9a;
-}
+/*color:#176e9a;*/
+
 
 .col-md-6 {
   margin: 0 0 30px;
 }
 
-col-sm-6 {
-	display: right;
+.col-sm-3 {
+	/*display: right;*/
 	align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display:block;
 }
+
+.klocki {
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  display: block;
+  }
+
 /*-----------*/
+
+#navbar {
+  float: left;
+  position: relative;
+}
+
 

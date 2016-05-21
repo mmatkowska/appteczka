@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('../fonts/Montserrat-Regular.eot');
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('../fonts/Montserrat-Regular.woff') format('woff'),
+    url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+    url('../fonts/Montserrat-Regular.svg#Montserrat-Regular') format('svg'),
+    url('../fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Montserrat-Regular', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.navbar-default .navbar-nav>li>a> {
+    color:white;
+}
+#buton {
+    border-radius: 2px;
+    border: 0px;
+    color: white;
+    text-shadow: none;
+    background-color: #caae89;
+    margin-right: 5px;
+}
+
+#buton:hover {
+    color: white;
+    background-color: #988255;
+}
+
+.btn.btn-n {
+    border-radius: 2px;
+    border: 0px;
+    color: white;
+    text-shadow: none;
+    background-color: #caae89;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+.btn.btn-n:hover {
+    color: white;
+    background-color: #988255;
+}
+
+.navbar.navbar-default {
+    border-color: white;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+#myNav .container-fluid {
+    vertical-align: middle;
+}
+
+.jumbotron {
+    display: flex;
+    align-items: center;
+    background-image: url('../img/meds.jpeg');
+    background-size: cover;
+    color: #ffffff;
+    height: 500px;
+    text-shadow: 2px 2px 2px rgba(0, 22, 82, 1) !important;
+    margin-bottom: 30px;
+}
+
+.jumbotron h2 {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0;
+    color: #176e9a;
+}
+
+.jumbotron h3 {
+    margin: 0 0 20px;
+    color: #759bb6;
+}
+
+.topWrapper {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.left {
+    display:inline-block;
+    margin-right:20px;
+    padding: 0px 10px 0px 10px;
+}
+
+.center {
+    display:inline-block;
+    margin-right:20px;
+    padding: 0px 10px 0px 10px;
+}
+.right {
+    display:inline-block;
+    margin-right:20px;
+    padding: 0px 10px 0px 10px;
+}
+
+.long-txt {
+    width: 220px;
+}
+
+footer {
+    background-color: #d8d7dd;
+}
+
+.stopka {
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+}
+
+.wrapper {
+    color: black;
+    text-shadow: none;
+    background-color: #d8d7dd;
+    padding: 30px 20px 30px 20px;
+    text-align: left;
+    border-radius: 5px;
+    justify-content: center;
+    display: inline-block;
+    /*box-shadow: 2px 2px 1px #cccbd1;*/
+}
+
+.wrapper a {
+    color: #176e9a;
+    text-shadow: none;
+}
+
+.jumbotron .container {
+    text-align: center;
+}
+
+.wrapper.center {
+    text-align: center;
+}
