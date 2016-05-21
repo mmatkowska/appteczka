@@ -1,21 +1,96 @@
-	<!DOCTYPE html>
+<?php
+
+error_reporting(E_ALL ^ E_NOTICE);
+
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-	
-	<title>AppTeczka - dokumentacja</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" type="text/css" href="mine_main.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<title>AppTeczka - dokumenacja</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<!-- zewnętrzne -->
+	<link href="static/css/bootstrap.min.css" rel="stylesheet">
+	<link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-	
-	</head>
+
+	<!-- skrypty -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+
+	<!-- dedykowane -->
+	<link rel="stylesheet" type="text/css" href="static/css/theme.css">
+
+
+</head>
+
 <body>
 
-<footer>
+<?php
+
+if ($username && $userid) {
+	/*CHODZI TU O SPR ZALOGOWANIA*/
+	?>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav"
+						id="droppedDownButt">
+					<div class="burger-menu">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</div>
+				</button>
+				<h1>AppTeczka</h1>
+			</div>
+			<div class="collapse navbar-collapse" id="myNav">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="btn btn-n" id="buton" href="index.php" role="button">strona domowa</a></li>
+					<li><a class="btn btn-n" id="buton" href="member.php" role="button">Twoja apteczka</a></li>
+					<li><a class="btn btn-n" id="buton" href="statistics.php" role="button">statystyki</a></li>
+					<li><a class="btn btn-n" id="buton" href="documentation.php" role="button">dokumentacja</a></li>
+					<li><a class="btn btn-n" id="buton" href="logout.php" role="button">wyloguj się</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<?php
+
+} else {
+
+	?>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<h1>AppTeczka</h1>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<?php
+}
+?>
+
+<section class="jumbotron">
 	<div class="container">
-			<p>&copy; BIOMEDIXPOL</p>
+		<div class="wrapper center">
+			<a class="btn btn-n" href="static/img/class-db.class.violet.html" target="_blank" role="button">projekt bazy danych, hehe</a><br>
+			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia - logowanie</a>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="stopka">
+		<p>&copy; BIOMEDIXPOL 2016</p>
+		<p>projekt z przedmiotu Systemy Informatyczne w Medycynie</p>
 	</div>
 </footer>
 
