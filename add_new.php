@@ -49,7 +49,7 @@ if ($username && $userid) {
                         <span class="icon-bar"></span>
                     </div>
                 </button>
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
             <div class="collapse navbar-collapse" id="myNav">
                 <ul class="nav navbar-nav navbar-right">
@@ -72,7 +72,7 @@ if ($username && $userid) {
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
         </div><!-- /.container-fluid -->
     </nav>

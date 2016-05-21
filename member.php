@@ -49,7 +49,7 @@ if ($username && $userid) {
                         <span class="icon-bar"></span>
                     </div>
                 </button>
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
             <div class="collapse navbar-collapse" id="myNav">
                 <ul class="nav navbar-nav navbar-right">
@@ -72,7 +72,7 @@ if ($username && $userid) {
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
         </div><!-- /.container-fluid -->
     </nav>
@@ -114,10 +114,21 @@ if ($username && $userid) {
 
             ?>
 
-            <a class="btn btn-n" href="add_new.php" role="button">dodaj nowy lek</a>
+        </div>
+
+        <div class="wrapper">
+            tu będzie zgłaszanie tego, że coś zużyto, czyli wysyłanie do DRUGS_OUT, odswieżenie strony (+obliczenie ile zostało)
+        </div>
+
+        <div class="wrapper">
+            tu może wyszukiwanie po typie? w sensie, że div z całą bazą uaktualni się na dany typ wybrany tutaj
+
+            +myślałam jeszcze o bajerze w javascripcie (jeszcze nie umiem tego zrobić ale się nauczę) z wyskakującym okienkiem z powiadomieniem, że w przeciągu miesiąca jakiś lek się psuje
         </div>
     </div>
 </section>
+
+
 
 <footer>
     <div class="stopka">

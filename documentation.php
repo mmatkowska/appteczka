@@ -1,6 +1,9 @@
 <?php
 
 error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 
 ?>
 
@@ -46,7 +49,7 @@ if ($username && $userid) {
 						<span class="icon-bar"></span>
 					</div>
 				</button>
-				<h1>AppTeczka</h1>
+				<a href="index.php"><h1>AppTeczka</h1></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNav">
 				<ul class="nav navbar-nav navbar-right">
@@ -69,7 +72,7 @@ if ($username && $userid) {
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<h1>AppTeczka</h1>
+				<a href="index.php"><h1>AppTeczka</h1></a>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -81,8 +84,8 @@ if ($username && $userid) {
 <section class="jumbotron">
 	<div class="container">
 		<div class="wrapper center">
-			<a class="btn btn-n" href="static/img/class-db.class.violet.html" target="_blank" role="button">projekt bazy danych, hehe</a><br>
-			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia - logowanie</a>
+			<a class="btn btn-n" href="static/img/db-project.png" target="_blank" role="button">projekt bazy danych, hehe</a><br>
+			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia - wcale nie</a>
 		</div>
 	</div>
 </section>

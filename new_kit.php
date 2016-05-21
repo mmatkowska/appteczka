@@ -11,7 +11,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
 
-    <title>AppTeczka - zaloguj się</title>
+    <title>AppTeczka - załóż apteczkę</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- zewnętrzne -->
@@ -34,7 +34,7 @@ $username = $_SESSION['username'];
 <?php
 
 if ($username && $userid) {
-/*CHODZI TU O SPR ZALOGOWANIA*/
+    /*CHODZI TU O SPR ZALOGOWANIA*/
     ?>
 
     <nav class="navbar navbar-default">
@@ -84,89 +84,42 @@ if ($username && $userid) {
 <section class="jumbotron">
     <div class="container">
         <div class="wrapper">
+
 <?php
 
 if ($username && $userid) {
-    echo "Zalogowałeś się jako <b>$username</b>. <a href='./member.php'>Kliknij tutaj</a> aby przejść do Twojej apteczki.";
-} else {
-    $form = "<form action='./login.php' method='post'>
+
+    $form = "<form action='./new_kit.php' method='post'>
         
     <table>
 
 	<tr>
-		<td>Nazwa użytkownika:</td>
-		<td><input type='text' class='long-txt' name='user' placeholder='Wprowadź nazwę użytkownika' required></td>
+		<td>Nazwa Twojej apteczki:</td>
+		<td><input type='text' class='long-txt' name='kit_name' value='$getkitname' placeholder='Wprowadź nazwę apteczki' required></td>
 	</tr>
 	
 	<tr>
-		<td>Hasło:</td>
-		<td><input type='password' class='long-txt' name='password' placeholder='Wprowadź hasło' required></td>
+		<td>Stwórz hasło do apteczki:</td>
+		<td><input type='password' class='long-txt' name='kit_password' value='$getkitpassword' placeholder='Wprowadź hasło' required></td>
 	</tr>
 
 	<tr>
 		<td></td>
-		<td><input type='submit' class='btn btn-n' name='loginbtn' value='zaloguj się' /></td>
-	</tr>
-	
-	<tr>
-		<td></td>
-		<td><a href='./register.php'>zarejestruj się</a></td>
+		<td><input type='submit' class='btn btn-n' name='submitbtn' value='załóż apteczkę' /></td>
 	</tr>
 	
 	</table>
 </form>";
 
-    if ($_POST['loginbtn']) {
-        $user = $_POST['user'];
-        $password = md5($password);
-        $password = $_POST['password'];
 
-        if ($user) {
-            if ($password) {
-                require("connect.php");
 
-                $query = mysql_query("SELECT * FROM users WHERE username='$user'");
-                $numrows = mysql_num_rows($query);
-
-                if ($numrows == 1) {
-                    $row = mysql_fetch_assoc($query);
-                    $dbid = $row['id'];
-                    $dbuser = $row['username'];
-                    $dbpassword = $row['password'];
-                    $dbactive = $row['active'];
-
-                    if ($password == $dbpassword) {
-
-                        if ($dbactive == 1) {
-                            $_SESSION['userid'] = $dbid;
-                            $_SESSION['username'] = $dbuser;
-
-                            echo "Zostałeś zalogowany jako <b>$dbuser</b>. <a href ='./member.php'>Kliknij tutaj</a> aby przejść do strony domowej.";
-                        } else {
-                            echo "Musisz aktywować swoje konto. $form";
-                        }
-                    } else {
-                        echo "Wpisano niepoprawne hasło. $form";
-                    }
-                } else {
-                    echo "Nie znaleziono użytkownika o podanej nazwie. $form";
-                }
-                mysql_close();
-            } else {
-                echo "Musisz wpisać swoje hasło. $form";
-            }
-        } else {
-            echo "Musisz wpisać nazwę użytkownika. $form";
-        }
-    } else {
-        echo $form;
-    }
 }
 
 ?>
-            </div>
+            coś się zesrało, rozgrzebałam tu troche, bez bazy do tego jeszcze, ogólnie po aktywacji jako OWNER trzeba założyć apteczkę
         </div>
-    </section>
+    </div>
+</section>
 
 <footer>
     <div class="stopka">

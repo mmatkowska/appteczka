@@ -1,6 +1,9 @@
 <?php
 
 error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 
 ?>
 
@@ -46,7 +49,7 @@ if ($username && $userid) {
                         <span class="icon-bar"></span>
                     </div>
                 </button>
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
             <div class="collapse navbar-collapse" id="myNav">
                 <ul class="nav navbar-nav navbar-right">
@@ -69,7 +72,7 @@ if ($username && $userid) {
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <h1>AppTeczka</h1>
+                <a href="index.php"><h1>AppTeczka</h1></a>
             </div>
         </div><!-- /.container-fluid -->
     </nav>
@@ -81,9 +84,24 @@ if ($username && $userid) {
 <section class="jumbotron">
     <div class="container">
         <div class="row text-center">
-            <h2>AppTeczka</h2>
-            <h3>uporządkuj swoje leki</h3>
-            <a class="btn btn-n" href="login.php" role="button">zaloguj się</a>
+            <?php
+
+            if ($username && $userid) {
+                /*CHODZI TU O SPR ZALOGOWANIA*/
+                ?>
+                <h2>Hej, <?php echo "<b>$username</b>"?>! </h2><br>
+                    <h3>Mamy nadzieję, że wszystko u Ciebie w porządku i sprawdzasz tylko czy masz plastry. :)</h3>
+
+                <?php
+            }
+            else {
+                ?>
+                <h2>AppTeczka</h2>
+                <h3>uporządkuj swoje leki</h3>
+                <a class="btn btn-n" href="login.php" role="button">zaloguj się</a>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </section>

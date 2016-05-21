@@ -1,6 +1,9 @@
 <?php
 
 error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 
 ?>
 
@@ -45,7 +48,7 @@ if ($username && $userid) {
 						<span class="icon-bar"></span>
 					</div>
 				</button>
-				<h1>AppTeczka</h1>
+				<a href="index.php"><h1>AppTeczka</h1></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNav">
 				<ul class="nav navbar-nav navbar-right">
@@ -68,7 +71,7 @@ if ($username && $userid) {
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<h1>AppTeczka</h1>
+				<a href="index.php"><h1>AppTeczka</h1></a>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -81,6 +84,9 @@ if ($username && $userid) {
 	<div class="container">
 		<div class="wrapper">
 			<h1>kiedyś coś</h1>
+			<h3>będzie się dało tu cokolwiek zrobić jak zadziała 'zreaktywowana' baza danych</h3>
+			<h4>ogólnie myślałam o wykresie ile zjadło się tabletek danego dnia, jako wykres słupkowy w meisiącu, miesiąc mógłby być z selecta</h4>
+			<h5>i jakiś taki liniowy wykres ile piniędzy poszło się paść przez marnacje</h5>
 
 		</div>
 	</div>
