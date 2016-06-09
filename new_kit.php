@@ -84,22 +84,35 @@ if ($username && $userid) {
 <section class="jumbotron">
     <div class="container">
         <div class="wrapper">
-
 <?php
-
-if ($username && $userid) {
-
+	if ($_POST['submitbtn']) {
+		$getkitname = $_POST['kit_name'];
+		$getkitpassword = $_POST['kit_password'];
+		$owner = $username;
+		
+		if ($getkitname) {
+			$query = mysql_query("SELECT * FROM aid_kits WHERE kit_name='$getkitname'");
+			$numrows = mysql_num_rows($query);
+			if ($numrows == 0) {
+			mysql_query("INSERT INTO aid_kits VALUES ('', '$getkitname', '$getkitpassword', '$owner')"); }
+			else {
+				$errormsg = "Apteczka o podanej nazwie już istnieje, proszę podaj inną.";
+			}
+			mysql_close();
+			
+		}
+		
     $form = "<form action='./new_kit.php' method='post'>
-        
+     w bazie aid_kits chyba musz byc jakas lista ludzi z dostepem, ale nie wiem jeszcze   
     <table>
 
 	<tr>
-		<td>Nazwa Twojej apteczki:</td>
+		<td>nazwa Twojej apteczki:</td>
 		<td><input type='text' class='long-txt' name='kit_name' value='$getkitname' placeholder='Wprowadź nazwę apteczki' required></td>
 	</tr>
 	
 	<tr>
-		<td>Stwórz hasło do apteczki:</td>
+		<td>stwórz hasło do apteczki:</td>
 		<td><input type='password' class='long-txt' name='kit_password' value='$getkitpassword' placeholder='Wprowadź hasło' required></td>
 	</tr>
 
@@ -111,12 +124,10 @@ if ($username && $userid) {
 	</table>
 </form>";
 
+			echo $form;
 
-
-}
-
-?>
-            coś się zesrało, rozgrzebałam tu troche, bez bazy do tego jeszcze, ogólnie po aktywacji jako OWNER trzeba założyć apteczkę
+            ?> 
+		   
         </div>
     </div>
 </section>

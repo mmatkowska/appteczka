@@ -125,6 +125,7 @@ if ($username && $userid) {
 
             +myślałam jeszcze o bajerze w javascripcie (jeszcze nie umiem tego zrobić ale się nauczę) z wyskakującym okienkiem z powiadomieniem, że w przeciągu miesiąca jakiś lek się psuje
         </div>
+		
     </div>
 </section>
 

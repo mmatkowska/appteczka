@@ -84,6 +84,8 @@ if ($username && $userid) {
 <section class="jumbotron">
 	<div class="container">
 		<div class="wrapper center">
+		<p> zastanawiam sie czy owner nie powinno byc indexem do id. user</p>
+		<p> w user na schemacie db brakuje kolumny code </p>
 			<a class="btn btn-n" href="static/img/db-project.png" target="_blank" role="button">projekt bazy danych, hehe</a><br>
 			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia - wcale nie</a>
 		</div>

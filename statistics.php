@@ -79,6 +79,34 @@ if ($username && $userid) {
 	<?php
 }
 ?>
+<div>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load("current", {packages: "corechart"});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+
+			var chart1 = gooogle.visualisation.arrayToDataTable([
+				['Plec', 'Ilosc'],
+				['kobiety', 'seiradanych'],
+				['mezyczyzni', 'seria2'],
+			]);
+
+			var options_chart1 = {
+				title: 'Eloszka',
+				backgroundColor: 'ten co wszedzie',
+			};
+
+			var chart_chart1 = new.google.visualisation.ColumnChart(document.getElementById('chart1'));
+
+			chart_chart1.draw(chart1, options_chart1);
+		}
+	</script>
+</div>
+
+<!-- rysowanie potem <div id="chart1" style="width: 700px; height: 400px;"></div>
+-->
 
 <section class="jumbotron">
 	<div class="container">

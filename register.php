@@ -88,6 +88,7 @@ if ($username && $userid) {
                 $getemail = $_POST['email'];
                 $getpassword = $_POST['password'];
                 $getretypepassword = $_POST['retypepassword'];
+				$getrole = $_POST['role'];
 
                 if ($getuser) {
                     if ($getemail) {
@@ -108,9 +109,7 @@ if ($username && $userid) {
                                                 $code = md5(rand());
                                                 $password = md5(md5($password));
 
-                                                mysql_query("INSERT INTO users VALUES (
-										'', '$getuser', '$password', '$getemail', '0', '$code', '$date'
-									)");
+                                                mysql_query("INSERT INTO users VALUES ('', '$getuser', '$password', '$getemail', '0', '$code', '$date', '$getrole')");
 
                                                 $query = mysql_query("SELECT * FROM users WHERE username='$getuser'");
                                                 $numrows = mysql_num_rows($query);
@@ -193,6 +192,19 @@ if ($username && $userid) {
 		</tr>
 		
 		<tr>
+			<td>Wybierz swoją rolę:</td>
+		</tr>
+		
+		<tr>
+			<td><input type='radio' name='role' value='1' required>właściciel</td>
+			<td><input type='radio' name='role' value='2'>użytkownik</td>
+		</tr>
+		
+		<tr>
+			<td>akceptuję regulamin:</td>
+			<td><input type='checkbox' name='regacceptance' value='accept' required></td>
+		</tr>
+		
 			<td></td>
 			<td><input type='submit' class='btn btn-n' name='registerbtn' value='zarejestruj się' /></td>
 		</tr>

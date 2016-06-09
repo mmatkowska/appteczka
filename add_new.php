@@ -94,7 +94,7 @@ if ($username && $userid) {
 
 	<tr>
 		<td>Nazwa leku:</td>
-		<td><input type='text' name='name' placeholder='Wprowadź nazwę leku' required></td>
+		<td><input type='long-text' name='name' placeholder='Wprowadź nazwę leku' required></td>
 	</tr>
 	
 	<tr>
