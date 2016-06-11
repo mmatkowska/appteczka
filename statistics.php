@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
+$userkit = $_SESSION['userkit'];
 
 ?>
 

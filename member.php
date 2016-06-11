@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
+$userkit = $_SESSION['userkit'];
 
 ?>
 
@@ -11,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
 
-    <title>AppTeczka - strona domowa</title>
+    <title>AppTeczka - Twoja apteczka</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- zewnętrzne -->
@@ -89,26 +90,28 @@ if ($username && $userid) {
             if ($username && $userid) {
                 echo "Witaj <b>$username</b>. <br> Poniżej wypisane są leki znajdujące się w Twojej apteczce. <br><br>";
                 require("connect.php");
-                $query = "SELECT * FROM drugs";
-                $result = mysql_query($query);
-                $name = "nazwa leku";
-                $expiration_date = "data ważności";
-                $quantity = "ilość tabletek";
-                $price = "cena";
+                $join_query = "SELECT * FROM drugs_in_kit INNER JOIN drugs_specification ON drugs_in_kit.drugs_specification_id=drugs_specification.id";
+                $result = mysql_query($join_query);
+                if ($result) {
+   					$name = "nazwa leku";
+                	$expiration_date = "data ważności";
+                	$quantity = "ilość tabletek";
+                	$price = "cena";
 
-                echo "<table>";
-                echo "<tr><td>" . $name . str_repeat('&nbsp;', 3) . "</td><td>" . $expiration_date . str_repeat('&nbsp;', 3) . "</td><td>" . $quantity . str_repeat('&nbsp;', 3) . "</td><td>" . $price . "</td></tr>";
-                while($row = mysql_fetch_array($result)) {
-                    echo "<tr><td>" . $row['name'] . str_repeat('&nbsp;', 3) . "</td><td>" . $row['expiration_date'] . str_repeat('&nbsp;', 3) . "</td><td>" . $row['quantity'] . str_repeat('&nbsp;', 3) . "</td><td>" . $row['price'] . "</td></tr>";
-                }
-
-                echo "</table><br>";
-                mysql_close();
-                ?>
-                <a class="btn btn-n" href="add_new.php" role="button">dodaj nowy lek</a>
-                <?php
-            }
-            else {
+					if ($join_query == 0) {
+							echo "<table>";
+                			echo "<tr><td>" . $name . str_repeat('&nbsp;', 3) . "</td><td>" . $expiration_date . str_repeat('&nbsp;', 3) . "</td><td>" . $quantity . str_repeat('&nbsp;', 3) . "</td><td>";
+                			  while($row = mysql_fetch_array($result)) {
+                    				echo "<tr><td>" . $row['name_spec'] . str_repeat('&nbsp;', 3) . "</td><td>" . $row['best_before'] . str_repeat('&nbsp;', 3) . "</td><td>" . $row['quantity_left'] . "</td></tr>";
+                				}
+                    		echo "</table><br>";
+						}
+                			mysql_close();
+                			?><a class="btn btn-n" href="search.php" role="button">dodaj nowy lek</a><a class="btn btn-n" href="drug_use.php" role="button">zgłoś użycie leku</a><?php
+				} else {
+					die('Invalid query: ' . mysql_error());
+				}
+        	} else {
                 echo "Jesteś niezalogowany. <br> <a href='./login.php' class='btn btn-n'>zaloguj się</a>";
             }
 
@@ -117,16 +120,19 @@ if ($username && $userid) {
         </div>
 
         <div class="wrapper">
-            tu będzie zgłaszanie tego, że coś zużyto, czyli wysyłanie do DRUGS_OUT, odswieżenie strony (+obliczenie ile zostało)
+             COŚ NIE TAK DATA SIĘ WPISUJE ... I JESZCZE TRZEBA ZROBIĆ ŻEBY SIĘ KALENDARZ ROZWIJAŁ PRZY DODAWANIU DATY WAŻNOŚCI LEKU WCZEŚNIEJ TAK BYŁO A TERAZ NIE MOGĘ COŚ TEGO USTAWIĆ
+        </div>
+        
+		<div class="wrapper">
+              wyszukiwanie na dziś już mi nie siadło.. jak coś to mogę to zrobić w tygodniu - G.
         </div>
 
         <div class="wrapper">
-            tu może wyszukiwanie po typie? w sensie, że div z całą bazą uaktualni się na dany typ wybrany tutaj
-
             +myślałam jeszcze o bajerze w javascripcie (jeszcze nie umiem tego zrobić ale się nauczę) z wyskakującym okienkiem z powiadomieniem, że w przeciągu miesiąca jakiś lek się psuje
         </div>
 		
     </div>
+    
 </section>
 
 

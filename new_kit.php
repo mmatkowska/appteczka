@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
+$usirkit = $_SESSION['userkit'];
 
 ?>
 
@@ -34,7 +35,7 @@ $username = $_SESSION['username'];
 <?php
 
 if ($username && $userid) {
-    /*CHODZI TU O SPR ZALOGOWANIA*/
+/*CHODZI TU O SPR ZALOGOWANIA*/
     ?>
 
     <nav class="navbar navbar-default">
@@ -85,52 +86,100 @@ if ($username && $userid) {
     <div class="container">
         <div class="wrapper">
 <?php
-	if ($_POST['submitbtn']) {
-		$getkitname = $_POST['kit_name'];
-		$getkitpassword = $_POST['kit_password'];
-		$owner = $username;
-		
-		if ($getkitname) {
-			$query = mysql_query("SELECT * FROM aid_kits WHERE kit_name='$getkitname'");
-			$numrows = mysql_num_rows($query);
-			if ($numrows == 0) {
-			mysql_query("INSERT INTO aid_kits VALUES ('', '$getkitname', '$getkitpassword', '$owner')"); }
-			else {
-				$errormsg = "Apteczka o podanej nazwie już istnieje, proszę podaj inną.";
-			}
-			mysql_close();
-			
-		}
-		
-    $form = "<form action='./new_kit.php' method='post'>
-     w bazie aid_kits chyba musz byc jakas lista ludzi z dostepem, ale nie wiem jeszcze   
+
+if ($username && $userid) {
+     $form = "<form action='./new_kit.php' method='post'>
+        
     <table>
 
 	<tr>
-		<td>nazwa Twojej apteczki:</td>
-		<td><input type='text' class='long-txt' name='kit_name' value='$getkitname' placeholder='Wprowadź nazwę apteczki' required></td>
+		<td>Nazwa apteczki:</td>
+		<td><input type='text' class='long-txt' name='name' placeholder='Wprowadź nazwę apteczki' required></td>
 	</tr>
 	
 	<tr>
-		<td>stwórz hasło do apteczki:</td>
-		<td><input type='password' class='long-txt' name='kit_password' value='$getkitpassword' placeholder='Wprowadź hasło' required></td>
+		<td>Hasło:</td>
+		<td><input type='password' class='long-txt' name='password' placeholder='Wprowadź hasło do apteczki' required></td>
 	</tr>
-
+	
+	<tr>
+		<td>Powtórz hasło:</td>
+		<td><input type='password' class='long-txt' name='password_retype' placeholder='Wprowadź hasło do apteczki' required></td>
+	</tr>
+	
 	<tr>
 		<td></td>
-		<td><input type='submit' class='btn btn-n' name='submitbtn' value='załóż apteczkę' /></td>
+		<td><input type='submit' class='btn btn-n' name='addbtn' value='załóż apteczkę' /></td>
 	</tr>
 	
 	</table>
 </form>";
 
-			echo $form;
+	if ($_POST['addbtn']) {
+        $name = $_POST['name'];
+        $password = md5($_POST['password']);
+        $retypepassword = md5($_POST['password_retype']);
 
-            ?> 
-		   
+        if ($name) {
+            if ($password) {
+                if ($retypepassword) {
+                    if ($password === $retypepassword) {
+                        require("./connect.php");
+
+                        $query = mysql_query("SELECT * FROM aid_kits WHERE kit_name='$name'");
+                        $username = $_SESSION['username'];
+                        $user_query = mysql_query("SELECT * FROM users WHERE username='$username'");
+                        $numrows = mysql_num_rows($query);
+                        if ($numrows == 0) {
+                        	if ($user_query == true) {
+                            	$row = mysql_fetch_assoc($user_query);
+                				$dbuser = $row['username'];
+                	
+                            	mysql_query("INSERT INTO aid_kits VALUES ('', '$name','$username','$password')");
+								$kit_id_query = mysql_query("SELECT id FROM aid_kits WHERE kit_name='$name'");
+									if ($kit_id_query == true) {
+										$row = mysql_fetch_assoc($kit_id_query);
+                						$dbid = $row['id'];
+                						mysql_query("UPDATE users SET aid_kit_id='$dbid' WHERE username='$username'");
+                						$_SESSION['userkit'] = $dbid;
+                						$errormsg = "Założono apteczkę $name. <a href ='./member.php'>Przejdź do apteczki</a>";
+                					
+                					} else {
+                						$errormsg = "Wystąpił błąd. Nie udało się założyć apteczki1";
+                					}
+							} else {
+								$errormsg = "Wystąpił błąd. Nie udało się założyć apteczki3";
+							}
+                        } else {
+                            $errormsg = "Istnieje już apteczka o takiej nazwie. $form";
+                        }
+                        	mysql_close();
+            		} else {
+                        $errormsg = "Podane hasła nie są takie same. $form";
+                    }
+                } else {
+                    $errormsg = "Musisz potwórzyć hasło do apteczki. $form";
+                }
+        	} else {
+                $errormsg = "Musisz podać hasło do apteczki. $form";
+            }
+        } else {
+            $errormsg = "Musisz podać nazwę apteczki. $form";
+        }
+    } else {
+    	$errormsg = "";
+        echo $form;
+    } 
+} else {
+    echo "Jesteś niezalogowany. <a href='./login.php'>Zaloguj się</a>";
+}
+
+echo $errormsg;
+
+?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <footer>
     <div class="stopka">

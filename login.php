@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
+$usirkit = $_SESSION['userkit'];
 
 ?>
 
@@ -118,9 +119,8 @@ if ($username && $userid) {
 
     if ($_POST['loginbtn']) {
         $user = $_POST['user'];
-        $password = md5($password);
-        $password = $_POST['password'];
-
+        $password = md5($_POST['password']);
+       
         if ($user) {
             if ($password) {
                 require("connect.php");
@@ -132,6 +132,7 @@ if ($username && $userid) {
                     $row = mysql_fetch_assoc($query);
                     $dbid = $row['id'];
                     $dbuser = $row['username'];
+                    $dbkit = $row['aid_kit_id'];
                     $dbpassword = $row['password'];
                     $dbactive = $row['active'];
 
@@ -140,6 +141,7 @@ if ($username && $userid) {
                         if ($dbactive == 1) {
                             $_SESSION['userid'] = $dbid;
                             $_SESSION['username'] = $dbuser;
+                            $_SESSION['userkit'] = $dbkit;
 
                             echo "Zostałeś zalogowany jako <b>$dbuser</b>. <a href ='./member.php'>Kliknij tutaj</a> aby przejść do strony domowej.";
                         } else {

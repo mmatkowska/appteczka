@@ -5,6 +5,7 @@ session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
 $userkit = $_SESSION['userkit'];
+$spec_id = $_SESSION['drug_id'];
 
 ?>
 
@@ -12,7 +13,7 @@ $userkit = $_SESSION['userkit'];
 <html>
 <head>
 
-    <title>AppTeczka - wylogowanie</title>
+    <title>AppTeczka - dodaj lek</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- zewnętrzne -->
@@ -26,6 +27,7 @@ $userkit = $_SESSION['userkit'];
 
     <!-- dedykowane -->
     <link rel="stylesheet" type="text/css" href="static/css/theme.css">
+
 
 </head>
 
@@ -84,25 +86,61 @@ if ($username && $userid) {
 <section class="jumbotron">
     <div class="container">
         <div class="wrapper">
-
 <?php
 
 if ($username && $userid) {
-    session_destroy();
-    echo "Zostałeś wylogowany. Za chwilę zostaniesz przekierowany na stronę główną." ?> <!--ZOBACZYMS-->
-    <meta http-equiv="refresh" content="3;url=./index.php" />
-    <?php
-}
-else {
-    echo "Jesteś niezalogowany."; ?>
-            <a class="btn btn-n" href="login.php" role="button">zaloguj się</a>
-            <?php
+
+  $form = "<form action='./add_to_kit.php' method='post'>
+        
+    <table>
+	<tr>
+		<td>Data wazności:</td>
+		<td><input type='date' name='expiration_date' placeholder='YYYY-mm-dd' required></td>
+	</tr>
+	
+	<tr>
+		<td>Liczba tabletek:</td>
+		<td><input type='number' name='quantity' placeholder='Wprowadź liczbę tabletek' required></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td><input type='submit' name='addbtn' value='Dodaj lek do apteczki' /></td>
+	</tr>
+	
+	</table>
+</form>";
+
+    if ($_POST['addbtn']) {
+         $quantity=$_POST['quantity'];
+         $date=$_POST['expiration_date'];
+         			
+    	if($quantity) {
+         	if($date) {
+         		require("./connect.php");
+         		$query = mysql_query("INSERT INTO drugs_in_kit VALUES ('', '$quantity', '$date', '$userkit', '$spec_id')");
+         		if ($query == false) {
+         			echo mysql_error();
+         		}
+         		mysql_close();
+         		echo "Dodałeś lek do apteczki.<a class='btn btn-n' href='member.php' role='button'>wróć do apteczki</a>";
+         	} else {
+         		echo "Wpisz datę ważności leku.";
+         	}
+         } else {
+         	echo "Wpisz ilość tabletek, jaką chcesz włożyć do apteczki.";
+         }
+    } else {
+        echo $form;
+    }
+} else {
+    echo "Jesteś niezalogowany. <a class='btn btn-n' href='login.php' role='button'>zaloguj się</a>";
 }
 
 ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <footer>
     <div class="stopka">

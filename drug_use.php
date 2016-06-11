@@ -12,7 +12,7 @@ $userkit = $_SESSION['userkit'];
 <html>
 <head>
 
-    <title>AppTeczka - wylogowanie</title>
+    <title>AppTeczka - zażycie leku</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- zewnętrzne -->
@@ -26,6 +26,7 @@ $userkit = $_SESSION['userkit'];
 
     <!-- dedykowane -->
     <link rel="stylesheet" type="text/css" href="static/css/theme.css">
+
 
 </head>
 
@@ -84,25 +85,68 @@ if ($username && $userid) {
 <section class="jumbotron">
     <div class="container">
         <div class="wrapper">
-
 <?php
 
 if ($username && $userid) {
-    session_destroy();
-    echo "Zostałeś wylogowany. Za chwilę zostaniesz przekierowany na stronę główną." ?> <!--ZOBACZYMS-->
-    <meta http-equiv="refresh" content="3;url=./index.php" />
-    <?php
-}
-else {
-    echo "Jesteś niezalogowany."; ?>
-            <a class="btn btn-n" href="login.php" role="button">zaloguj się</a>
-            <?php
+
+  $form = "<form action='./drug_use.php' method='post'>
+        
+    <table>
+	<tr>
+		<td>Nazwa leku:</td>
+		<td><input type='name' name='name' placeholder='Wprowadż nazwę leku' required></td>
+	</tr>
+	
+	<tr>
+		<td>Zażyta ilość:</td>
+		<td><input type='number' name='quantity' placeholder='Wprowadź liczbę' required></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td><input type='submit' name='addbtn' value='Prześlij informację o zażyciu leku' /></td>
+	</tr>
+	
+	</table>
+</form>";
+
+    if ($_POST['addbtn']) {
+         $name=$_POST['name'];
+         $quantity=$_POST['quantity'];
+         			
+    	if($name) {
+         	if($quantity) {
+         		require("./connect.php");
+         		mysql_query("SELECT * FROM drugs_in_kit INNER JOIN drugs_specification ON drugs_in_kit.drugs_specification_id=drugs_specification.id WHERE name_spec LIKE '$name%'");
+         		if ($query == true) {
+         			$row = mysql_fetch_assoc($query);
+                	$dbquantity= $row['quantity_left'];
+                	$dbid = $row['id'];
+                	$new_quantity = $dbquantity - $quantity;
+                	mysql_query("UPDATE drugs_in_kit SET quantity_left='$new_quantity' WHERE id='$dbid' AND aid_kit_id='$userkit'");
+                	mysql_query("UPDATE drugs_in_kit SET last_accessed_by='$username' WHERE id='$dbid' AND aid_kit_id='$userkit'");
+                	echo "Przesłałeś informację o zażyciu leku. <a href='./member.php'>Powrót do apteczki</a>";
+         		} else {
+         			echo "Nie znaleziono leku o podanej nazwie. $form";
+         		}
+         		mysql_close();
+         	} else {
+         		echo "Wpisz liczbę zażytych tabletek. $form";
+         	}
+         } else {
+         	echo "Wpisz nazwę zażytego leku. $form";
+         }
+    } else {
+        echo $form;
+    }
+} else {
+    echo "Jesteś niezalogowany. <a class='btn btn-n' href='login.php' role='button'>zaloguj się</a>";
 }
 
 ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <footer>
     <div class="stopka">

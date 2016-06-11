@@ -4,6 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
+$userkit = $_SESSION['userkit'];
 
 ?>
 
@@ -11,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
 
-	<title>AppTeczka - dokumenacja</title>
+	<title>AppTeczka - dokumentacja</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<!-- zewnętrzne -->
@@ -84,10 +85,10 @@ if ($username && $userid) {
 <section class="jumbotron">
 	<div class="container">
 		<div class="wrapper center">
-		<p> zastanawiam sie czy owner nie powinno byc indexem do id. user</p>
-		<p> w user na schemacie db brakuje kolumny code </p>
-			<a class="btn btn-n" href="static/img/db-project.png" target="_blank" role="button">projekt bazy danych, hehe</a><br>
-			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia - wcale nie</a>
+		<p> dodać do tabeli user pole id apteczki</p>
+		<p> dodać tabelę drugs_waste czy jakoś tak z przeterminowanymi lekami, relacja z tabelą drugs_in </p>
+			<a class="btn btn-n" href="static/img/db-project.png" target="_blank" role="button">projekt bazy danych</a><br>
+			<a class="btn btn-n" href="static/img/usecase-login.ucase.violet.html" target="_blank" role="button">diagram przypadków użycia</a>
 		</div>
 	</div>
 </section>
